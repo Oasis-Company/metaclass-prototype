@@ -1,1 +1,48 @@
+{
+  "$id": "https://example.org/metaverse/schema/water.v0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Water Metaclass v0.1",
+  "type": "object",
+  "allOf": [
+    { "$ref": "metaclass.base.v0.1.json" }
+  ],
+  "required": ["meta", "intrinsic"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["type", "version"],
+      "properties": {
+        "type": { "const": "water" },
+        "version": { "const": "0.1" }
+      },
+      "additionalProperties": true
+    },
+    "intrinsic": {
+      "type": "object",
+      "required": ["state", "temperatureC", "flow"],
+      "properties": {
+        "state": { "type": "string", "enum": ["solid", "liquid", "gas"] },
+        "temperatureC": { "type": "number" },
+        "flow": {
+          "type": "object",
+          "required": ["enabled"],
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "direction": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3,
+              "description": "Unit vector [x,y,z] if enabled"
+            },
+            "speed": { "type": "number", "minimum": 0 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}
 
