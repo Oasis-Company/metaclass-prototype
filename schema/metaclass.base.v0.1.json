@@ -1,1 +1,41 @@
+{
+  "$id": "https://example.org/metaverse/schema/metaclass.base.v0.1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Metaclass Base v0.1",
+  "type": "object",
+  "required": ["meta"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["type", "version"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Metaclass identifier, e.g., 'grass', 'water'"
+        },
+        "version": {
+          "type": "string",
+          "description": "Schema version for this metaclass instance, e.g., '0.1'"
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "interaction": {
+      "type": "object",
+      "properties": {
+        "affordances": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "What can be done to/with this object"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}
 
